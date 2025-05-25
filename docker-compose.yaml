@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:6
+    ports:
+      - "27417:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: nodeadmin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      MONGO_URI: mongodb://mongo:27017/node
+    depends_on:
+      - mongo
+  frontend:
+    build: ../app
+    container_name: 'curs-fe-c'
+    image: 'curs-fe'
+    ports:
+      - "4173:4173"
+    depends_on:
+      - app
+volumes:
+  mongo_data:
