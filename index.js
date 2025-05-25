@@ -35,9 +35,10 @@ app.use('/skill',skillRouter)
 async function main() {
 
     try{
-        await mongoose.connect(process.env.MONGODB_URI, {
+        await mongoose.connect("mongodb+srv://node:E0tTo5bTsChSECNp@cluster0.znh9frw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
             serverSelectionTimeoutMS: 5000,
-            retryWrites: true
+            retryWrites: true,
+            authSource: 'admin'
         })
         app.listen(port);
         console.log("Сервер ожидает подключения...");
