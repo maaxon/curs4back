@@ -59,7 +59,7 @@ router.post('/', async (req, res) => {
             degree: education.degree,
             major: education.major,
             school: education.school,
-            description: education.description,
+            description: education.description ? education.description : '',
         }))
 
 
@@ -154,7 +154,7 @@ router.put('/:id', async (req, res) => {
             try {
                 const updateData = {
                     school,
-                    description,
+                    description: description ? description : '',
                     from_date,
                     to_date,
                     degree,
@@ -255,4 +255,5 @@ router.put('/:id', async (req, res) => {
         res.status(500).json({error: 'Error updating resume'});
     }
 });
+
 module.exports = router;

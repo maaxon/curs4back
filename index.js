@@ -35,10 +35,13 @@ app.use('/skill',skillRouter)
 async function main() {
 
     try{
-        await mongoose.connect(process.env.MONGODB_URI, {
-            serverSelectionTimeoutMS: 5000,
-            retryWrites: true,
-            authSource: 'admin'
+        await mongoose.connect(url, {
+            user,
+            pass,
+            //authSource: 'admin',
+            //useUnifiedTopology: true,
+            //serverSelectionTimeoutMS: 5000,
+            //retryWrites: true
         })
         app.listen(port);
         console.log("Сервер ожидает подключения...");
