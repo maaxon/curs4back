@@ -57,7 +57,7 @@ const Resume = mongoose.model('Resume', resumeSchema);
 // Модель образования
 const educationSchema = new mongoose.Schema({
     school: { type: String, required: true },
-    description: { type: String, required: true },
+    description: { type: String },
     resume_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Resume', required: true },
     from_date: { type: Date, default: Date.now, required: true },
     to_date: { type: Date, required: true },
@@ -71,7 +71,7 @@ const Education = mongoose.model('Education', educationSchema);
 const experienceSchema = new mongoose.Schema({
     company_name: { type: String, required: true },
     position: { type: String, required: true },
-    description: { type: String, required: true },
+    description: { type: String },
     resume_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Resume', required: true },
     from_date: { type: String, required: true },
     to_date: { type: String, required: true }

@@ -59,11 +59,12 @@ router.post('/', async (req, res) => {
             degree: education.degree,
             major: education.major,
             school: education.school,
-            description: education.description ? education.description : '',
+            description: education.description,
         }))
-
+        console.log(nd)
 
         const newEducations = await Education.insertMany(nd)
+        console.log(newEducations)
 
         const newExperience = await Experience.insertMany(experience.map(exp => ({
                 company_name: exp.company,
@@ -154,7 +155,7 @@ router.put('/:id', async (req, res) => {
             try {
                 const updateData = {
                     school,
-                    description: description ? description : '',
+                    description,
                     from_date,
                     to_date,
                     degree,
