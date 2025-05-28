@@ -32,7 +32,11 @@ const vacancySchema = new mongoose.Schema({
     working_hours: { type: Number, required: true },
     experience: { type: Number, required: true },
     status: { type: String, default: 'Under review', enum: ['Under review', 'Published', 'Blocked'], required: true },
-    user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
+    user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    tags: {
+        type: [String],
+        default: []
+    }
 });
 
 const Vacancy = mongoose.model('Vacancy', vacancySchema);
@@ -45,7 +49,7 @@ const resumeSchema = new mongoose.Schema({
     salary: { type: Number },
     location: { type: String },
     status: { type: String, default: 'Under review', enum: ['Under review', 'Blocked', 'Published'], required: true },
-    user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
+    user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 });
 
 const Resume = mongoose.model('Resume', resumeSchema);

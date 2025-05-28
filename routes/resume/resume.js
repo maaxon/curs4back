@@ -135,13 +135,13 @@ router.delete('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     const resumeId = req.params.id;
-    const {title, description, salary, location, educations, experience, skills} = req.body;
+    const {title, description, salary, location, educations, experience, skills,image} = req.body;
 
     try {
         // Обновление основного резюме
         const updatedResume = await Resume.findByIdAndUpdate(
             resumeId,
-            {title, description, salary, location, status: 'Under review'},
+            {title, description, salary, location, image, status: 'Under review'},
             {new: true} // Возвращаем обновленный документ
         );
 

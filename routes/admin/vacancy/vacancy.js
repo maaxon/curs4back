@@ -18,7 +18,8 @@ router.post('/publish/:id', async (req, res) => {
             return res.status(404).json({error: 'Вакансия не найдена.'});
         }
 
-        const user = updatedResponse.user_id;
+        const user = publishedVacancy.user_id;
+        console.log(user)
         emailjs.send('service_tvk0sin', 'template_exj0jo7', {user_email:user.email,user_name:user.name,message:"Your vacancy has been published"}, {
             publicKey: 'v3179Takr1EXEB0ig',
             privateKey: 'IfkjeB75sd7pShw8TODYO', // optional, highly recommended for security reasons

@@ -17,7 +17,8 @@ router.post('/', async (req, res) => {
         degree,
         working_hours,
         user_id,
-        experience
+        experience,
+        tags
     } = req.body;
 
     // Валидация обязательных полей
@@ -37,7 +38,8 @@ router.post('/', async (req, res) => {
             degree,
             working_hours,
             user_id,
-            experience
+            experience,
+            tags
         });
 
         const savedVacancy = await newVacancy.save();
@@ -62,7 +64,8 @@ router.put('/:id', async (req, res) => {
         degree,
         working_hours,
         user_id,
-        experience
+        experience,
+        tags
     } = req.body;
 
     try {
@@ -79,6 +82,7 @@ router.put('/:id', async (req, res) => {
                 degree,
                 working_hours,
                 user_id,
+                tags,
                 experience,
                 status: 'Under review' // Обновляем статус
             },
@@ -113,7 +117,8 @@ router.get('/', async (req, res) => {
             working_hours: vacancy.working_hours,
             experience: vacancy.experience,
             status: vacancy.status,
-            user_id: vacancy.user_id
+            user_id: vacancy.user_id,
+            tags: vacancy.tags
         }));
 
         res.json(vacancyList);
@@ -155,7 +160,8 @@ router.get('/:id', async (req, res) => {
             experience: vacancy.experience,
             status: vacancy.status,
             user_id: vacancy.user_id,
-            rating: averageRate
+            rating: averageRate,
+            tags: vacancy.tags
         };
 
         res.json(vacancyObject);
