@@ -29,8 +29,8 @@ const vacancySchema = new mongoose.Schema({
     location: { type: String, required: true },
     job_type: { type: String, enum: ['Full time', 'Part time', 'Internship', 'Freelance', 'Remote'], required: true },
     degree: { type: String, enum: ['Postdoc', 'Ph.D.', 'Master', 'Bachelor'] },
-    working_hours: { type: Number, required: true },
-    experience: { type: Number, required: true },
+    working_hours: { type: Number, required: true, default: 0 },
+    experience: { type: Number, required: true, default: 0 },
     status: { type: String, default: 'Under review', enum: ['Under review', 'Published', 'Blocked'], required: true },
     user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     tags: {
